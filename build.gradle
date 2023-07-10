@@ -1,14 +1,14 @@
 plugins {
   id 'java'
-  id 'org.springframework.boot' version '2.7.13'
-  id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+  id 'org.springframework.boot' version '3.1.1'
+  id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'com.brainoffloaded.querydsl'
 version = '0.0.1-SNAPSHOT'
 
 java {
-  sourceCompatibility = '11'
+  sourceCompatibility = '17'
 }
 
 configurations {
@@ -23,13 +23,13 @@ repositories {
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-  implementation 'com.querydsl:querydsl-jpa:5.0.0'
+  implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 
   compileOnly 'org.projectlombok:lombok'
   runtimeOnly 'com.h2database:h2'
   annotationProcessor 'org.projectlombok:lombok'
-  annotationProcessor 'javax.persistence:javax.persistence-api'
-  annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jpa'
+  annotationProcessor 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+  annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
