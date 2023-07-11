@@ -6,36 +6,33 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.time.ZonedDateTime;
 import java.util.Set;
 
 @Data
 @Entity
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Fruit {
+public class Batch {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @NonNull
-  private String name;
+  private Long amountKilo;
   @NonNull
-  private String color;
-  private String description;
+  private ZonedDateTime arrivalDate;
   @NonNull
-  private String region;
+  private Double cost;
   @NonNull
-  @Enumerated(EnumType.STRING)
-  private Category category;
+  private Double shipping;
   @NonNull
-  @Enumerated(EnumType.STRING)
-  private Taste taste;
+  private String orderNumber;
 
+  @NonNull
   @ManyToMany
-  private Set<Batch> batches;
+  private Set<Fruit> fruits;
 }
