@@ -1,8 +1,6 @@
 package com.brainoffloaded.querydsl.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,30 +10,29 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.time.ZonedDateTime;
 import java.util.Set;
 
 @Data
 @Entity
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Fruit {
+public class Batch {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @NonNull
-  private String name;
+  private Long amountKilo;
   @NonNull
-  private String color;
-  private String description;
+  private ZonedDateTime arrivalDate;
   @NonNull
-  private String region;
+  private Double cost;
   @NonNull
-  @Enumerated(EnumType.STRING)
-  private Category category;
+  private Double shipping;
   @NonNull
-  @Enumerated(EnumType.STRING)
-  private Taste taste;
+  private String orderNumber;
 
+  @NonNull
   @ManyToMany
-  private Set<Batch> batches;
+  private Set<Fruit> fruits;
 }
